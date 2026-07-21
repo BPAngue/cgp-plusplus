@@ -130,6 +130,8 @@ int main(int argcc, char **argvv, char **envp) {
 
 	// Get parameters from command line
 	// ---------------------------------------------------------------------------------------
+	optind = checkpoint_file.empty() ? 3 : 4;
+
 	char opt;
 	while ((opt = getopt(argcc, argvv,
 			"a:n:v:z:c:i:o:f:r:m:p:l:b:e:g:j:s:1:2:3:4")) != -1) {

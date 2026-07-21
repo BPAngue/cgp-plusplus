@@ -114,7 +114,7 @@ void Initializer<E, G, F>::init_parfile_parameters(std::string parfile_path) {
 		throw std::runtime_error("File path is an empty string!");
 	}
 
-	std::string extension = std::filesystem::path(parfile_path).extension();
+	std::string extension = std::filesystem::path(parfile_path).extension().string();
 
 	if (extension != ".params") {
 		throw std::runtime_error("Method only accepts param files!");
@@ -331,9 +331,9 @@ template<class E, class G, class F>
 void Initializer<E, G, F>::finalize_parameter_configuration() {
 
 	this->parameters->set_genome_size();
-	this->parameters->set_eval_chunk_size();
 	this->parameters->set_population_size(this->parameters->get_num_parents()
 				+ this->parameters->get_num_offspring());
+	this->parameters->set_eval_chunk_size();
 }
 
 /// @brief Inits the number of ERC's according to the predefined type. 

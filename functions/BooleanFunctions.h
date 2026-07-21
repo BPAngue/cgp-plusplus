@@ -45,8 +45,12 @@ FunctionsBoolean<E>::FunctionsBoolean(std::shared_ptr<Parameters> p_parameters) 
 		if constexpr (!std::is_same<long, E>::value) {
 			if constexpr (!std::is_same<unsigned int, E>::value) {
 				if constexpr (!std::is_same<unsigned long, E>::value) {
-					throw std::invalid_argument(
-							"This class only supports (signed/unsigned) long and int!");
+					if constexpr (!std::is_same<long long, E>::value) {
+						if constexpr (!std::is_same<unsigned long long, E>::value) {
+							throw std::invalid_argument(
+									"This class only supports (signed/unsigned) long and int!");
+						}
+					}
 				}
 			}
 		}

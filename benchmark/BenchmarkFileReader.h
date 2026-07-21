@@ -100,7 +100,7 @@ void BenchmarkFileReader<E>::read_benchmark_file(std::string file_path) {
 		throw std::runtime_error("File path is an empty string!");
 	}
 
-	std::string extension = std::filesystem::path(file_path).extension();
+	std::string extension = std::filesystem::path(file_path).extension().string();
 
 	// Check if the file extension is valid
 	if (extension != ".plu" && extension != ".dat") {

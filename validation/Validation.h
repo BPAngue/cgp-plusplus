@@ -25,7 +25,11 @@ public:
 			if constexpr (!std::is_same<long, EVALUATION_TYPE>::value) {
 				if constexpr (!std::is_same<unsigned int, EVALUATION_TYPE>::value) {
 					if constexpr (!std::is_same<unsigned long, EVALUATION_TYPE>::value) {
-						return false;
+						if constexpr (!std::is_same<long long, EVALUATION_TYPE>::value) {
+							if constexpr (!std::is_same<unsigned long long, EVALUATION_TYPE>::value) {
+								return false;
+							}
+						}
 					}
 				}
 			}

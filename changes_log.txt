@@ -1,0 +1,33 @@
+Date: 2026-07-22
+
+Per-file summary of changes made during debugging and runtime fixes:
+
+To compile the codebase:
+
+cd build
+make clean
+make all
+
+1. cgp.cpp
+   - Verified the command-line parsing flow and how the flags such as -a, -b, -n, -m, -l, -e, and -j are passed into the initializer.
+   - Confirmed that these values were being loaded into the parameter object before the run begins.
+   - Added "optind = checkpoint_file.empty() ? 3 : 4;" in line 133 to make sure that the command-line arguments are passed into the algorithm.
+
+2. benchmark/BenchmarkFileReader.h
+   - System filepath in line 103 is not returning a string, so an explicit type cast to string is added.
+
+3. initializer/Initializer.h
+   - System filepath in line 117 is not returning a string, so an explicit type cast to string is added.
+   - Rearranged the initializers inside the finalize_parameter_configuration() method to set final population size first before setting evaluation chunk size.
+
+4. parameters/Parameters.h
+   - Adjusted the default statfile and checkpoint file path in lines 54 and 55 since both files are stored in a different directory outside of where the compiled .exe file is stored.
+
+5. template/template_types.h
+   - Modified typdef for EVALUATION_TYPE to long long to accommodate 64-bit value ranges present in the plu files.
+
+6. validation/validation.h
+   - Added more type check, long long and unsigned long long, inside validate_ls_type() method to reflect the new type definition of EVALUATION_TYPE.
+
+7. functions/BooleanFunctions.h
+   - Added more type check, long long and unsigned long long, inside FunctionsBoolean() method to reflect the new type definition of EVALUATION_TYPE.

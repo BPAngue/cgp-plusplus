@@ -51,8 +51,8 @@ public:
 	const PROBLEM SYMBOLIC_REGRESSION = 0;
 	const PROBLEM LOGIC_SYNTHESIS = 1;
 
-	const std::string STAT_FILE_DIR = "data/statfiles/";
-	const std::string CHECKPOINT_FILE_DIR = "data/checkpoints/";
+	const std::string STAT_FILE_DIR = "../data/statfiles/";
+	const std::string CHECKPOINT_FILE_DIR = "../data/checkpoints/";
 
 private:
 
